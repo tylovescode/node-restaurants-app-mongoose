@@ -44,7 +44,7 @@ app.get('/restaurants/:id', (req, res) => {
     // this is a convenience method Mongoose provides for searching
     // by the object _id property
     .findById(req.params.id)
-    .then(restaurant => res.json(restaurant))
+    .then(restaurant => res.json(restaurant.serialize()))
     .catch(err => {
       console.error(err);
       res.status(500).json({ message: 'Internal server error' });
