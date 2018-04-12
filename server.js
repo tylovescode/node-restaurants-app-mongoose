@@ -132,6 +132,7 @@ function runServer(databaseUrl, port = PORT) {
   return new Promise((resolve, reject) => {
     mongoose.connect(databaseUrl, err => {
       if (err) {
+        console.log("mongoose connect");
         return reject(err);
       }
       server = app.listen(port, () => {
@@ -139,6 +140,7 @@ function runServer(databaseUrl, port = PORT) {
         resolve();
       })
         .on('error', err => {
+          console.log(error);
           mongoose.disconnect();
           reject(err);
         });
